@@ -323,3 +323,66 @@ console.log(sum(7,3))
 ```
 
 
+# 타이머 함수
+```plaintext
+
+//setTimeout(함수,시간): 일정 시간 후 함수 실행
+//setInterval(함수,시간): 시간 간격마다 함수 실행
+//clearTimeout(): 설정된 Timeout함수를 종료
+//clearInterval(): 설정된 Interval 함수를 종료
+
+
+//setTimeout
+//-------------------------------------
+// const timer = setTimeout(() => {
+//     console.log('Heropy')
+// }, 3000)
+
+
+// const h1El = document.querySelector('h1')
+// h1El.addEventListener('click', () => {
+//     clearTimeout(timer)
+// })
+
+//-------------------------------------
+
+
+
+//setInterval
+
+// const timer = setInterval(() => {
+//     console.log('Heropy')
+// }, 3000)
+
+
+// const h1El = document.querySelector('h1')
+// h1El.addEventListener('click', () => {
+//     clearInterval(timer)
+// })
+
+//-------------------------------------
+
+```
+
+
+# 콜백
+
+```plaintext
+
+//함수의 인수로 사용되는 함수
+
+//setTimeout(함수,시간)
+//이때 사용되는 함수를 콜백이라 한다.
+
+function timeout(callback){
+    setTimeout(() => {
+        console.log('Heropy')
+        callback()
+    }, 3000)
+}
+
+timeout(() => {
+    console.log('Done')
+})
+
+```

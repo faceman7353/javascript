@@ -216,3 +216,53 @@ import { setUncaughtExceptionCaptureCallback } from "process"
 // }
 
 ```
+
+
+# 함수 복습
+
+```plaintext
+function sum(x, y){
+    return x + y
+}
+sum(1,3)
+// 함수 이름을 직접 선언하는 함수 선언문 기명함수 function sum()  <--이렇게
+//함수 이름이 업는함수표현  익명함수 const sum = function(x,y ) <---이렇게 
+//return 키워드가 있으면 함수의 어떤값이 밖으로 반환 된다는 의미도있지만
+//함수가 return으로 인해서 종료된다는 의미도 된다.
+//ex)
+
+// function sum(x,y){
+//     if (x < 2){
+//         return
+//     }
+//     return x + y
+// }
+ 
+// console.log(sum(1,3))
+//--> undefined 가 나옴. return문에 아무것도 써있지 않음.
+
+
+
+// const a = sum(1, 3)
+// const b =sum(4,12)
+
+// console.log(sum(1,3))
+// console.log(a)
+// console.log(b)
+// console.log(a + b)
+
+//함수를 호출할때는 함수 호출량을 최대한 줄이는것이 시스템 메모리 양을 줄이는것이 되기때문이다.
+
+
+function sum(){
+   console.log(arguments)
+   return arguments[0] + arguments[1]
+}
+ 
+console.log(sum(7,3))
+
+//javascript 내부에서 arguments 라는 객체를 내부에서 쓸수있도록 만들어져있다.
+//함수 내부에 매개 변수가 너무 많아서 일일이 지정할수없다면 arguments를 사용하는것도 방법이다.
+//하지만 일일이 지정하는것이 좋은 방법이다
+
+```

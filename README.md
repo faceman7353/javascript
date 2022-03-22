@@ -266,3 +266,60 @@ console.log(sum(7,3))
 //하지만 일일이 지정하는것이 좋은 방법이다
 
 ```
+
+
+# 화살표 함수
+
+```plaintext
+//화살표 함수 : 기본적으로 함수를 축약형으로 만들수있다.
+//만약 함수 내부에 return외 실행문이있다면 축약형으로 만들수없다.
+//단순한 return문만있다면 축약형으로 가능하다
+
+// () => {}  vs  function () {}
+
+// const double = function (x, y) {
+//     return x * 2
+// }
+
+// console.log('double:' ,double(7))
+
+// const doubleArrow = (x) => x * 2
+
+//const doubleArrow = (x) => {
+//    return x * 2
+//}  이 함수를위와같이 축약할수있다.
+//실행문에 화살표 함수를 썻을때는 {중괄호}사용하면 안됨.
+//만약 중괄호를 사용하고 싶을때는 ({}) 이렇게 사용하면된다
+
+
+
+// console.log('doubleArrow', doubleArrow(7))
+
+```
+
+# 즉시 실행함수
+```plaintext
+// //즉시 실행 함수
+// // IIFE, Immediately- invoked function expression
+
+// const a = 7
+// function double(){
+//     console.log(a * 2)
+// }
+
+// double();
+// //함수를 하나 만들었는데 밑에서 한번 실행되면 더이상 쓸일이 없다라고 한다면 
+// //굳이 함수의 이름을 만들필요성이 없을때
+
+
+
+// (function double(){
+//     console.log(a * 2)
+// })()  
+// //위와 같이 소괄호로 한번 묶으면 즉시 실행 함수가 된다.
+// //즉시 실행 함수를 사용하려면 ; (세미 콜론을 사용해라.)
+// // 즉시실행 함수는 소괄호를 이중으로 작성하는것(x)()   ---x는 함수
+// //다른 하나는 (x()) 소괄호 내부에 소괄호를 하나 더 넣는것.
+```
+
+

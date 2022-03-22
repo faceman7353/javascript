@@ -1,7 +1,6 @@
 //---------------------------
 //산술 연산자 (+ - * /)
 
-import { setUncaughtExceptionCaptureCallback } from "process"
 
 // console.log(1 + 2)
 // console.log(5 - 2)
@@ -243,20 +242,125 @@ import { setUncaughtExceptionCaptureCallback } from "process"
 
 // () => {}  vs  function () {}
 
-const double = function (x, y) {
-    return x * 2
-}
+// const double = function (x, y) {
+//     return x * 2
+// }
 
-console.log('double:' ,double(7))
+// console.log('double:' ,double(7))
 
-const doubleArrow = (x) => x * 2
+// const doubleArrow = (x) => x * 2
 
 //const doubleArrow = (x) => {
 //    return x * 2
 //}  이 함수를위와같이 축약할수있다.
+//실행문에 화살표 함수를 썻을때는 {중괄호}사용하면 안됨.
+//만약 중괄호를 사용하고 싶을때는 ({}) 이렇게 사용하면된다
 
 
-console.log('doubleArrow', doubleArrow(7))
+
+// console.log('doubleArrow', doubleArrow(7))
+
+
+
+// //즉시 실행 함수
+// // IIFE, Immediately- invoked function expression
+
+// const a = 7
+// function double(){
+//     console.log(a * 2)
+// }
+
+// double();
+// //함수를 하나 만들었는데 밑에서 한번 실행되면 더이상 쓸일이 없다라고 한다면 
+// //굳이 함수의 이름을 만들필요성이 없을때
+
+
+
+// (function double(){
+//     console.log(a * 2)
+// })()  
+// //위와 같이 소괄호로 한번 묶으면 즉시 실행 함수가 된다.
+// //즉시 실행 함수를 사용하려면 ; (세미 콜론을 사용해라.)
+// // 즉시실행 함수는 소괄호를 이중으로 작성하는것(x)()   ---x는 함수
+// //다른 하나는 (x()) 소괄호 내부에 소괄호를 하나 더 넣는것.
+
+
+//호이스팅
+//함수 선언부가 유효범위 최상단으로 끌어올려지는 현상
+
+
+// const a = 7
+
+// double()
+
+// function double(){
+//     console.log(a * 2)
+// }
+
+//함수가 실행 되기전에 먼저 함수를 호출하는 방법인데 코드가 많을시 먼저 함수를 호출하는 코드로 기본적으로 함수를 추측할수있다.
+
+
+
+
+
+//타이머 함수
+//setTimeout(함수,시간): 일정 시간 후 함수 실행
+//setInterval(함수,시간): 시간 간격마다 함수 실행
+//clearTimeout(): 설정된 Timeout함수를 종료
+//clearInterval(): 설정된 Interval 함수를 종료
+
+
+//setTimeout
+//-------------------------------------
+// const timer = setTimeout(() => {
+//     console.log('Heropy')
+// }, 3000)
+
+
+// const h1El = document.querySelector('h1')
+// h1El.addEventListener('click', () => {
+//     clearTimeout(timer)
+// })
+
+//-------------------------------------
+
+
+
+//setInterval
+
+// const timer = setInterval(() => {
+//     console.log('Heropy')
+// }, 3000)
+
+
+// const h1El = document.querySelector('h1')
+// h1El.addEventListener('click', () => {
+//     clearInterval(timer)
+// })
+
+//-------------------------------------
+
+
+//콜백
+//함수의 인수로 사용되는 함수
+
+//setTimeout(함수,시간)
+//이때 사용되는 함수를 콜백이라 한다.
+
+function timeout(callback){
+    setTimeout(() => {
+        console.log('Heropy')
+        callback()
+    }, 3000)
+}
+
+timeout(() => {
+    console.log('Done')
+})
+
+
+
+
 
 
 

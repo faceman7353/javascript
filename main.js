@@ -347,20 +347,87 @@
 //setTimeout(함수,시간)
 //이때 사용되는 함수를 콜백이라 한다.
 
-function timeout(callback){
-    setTimeout(() => {
-        console.log('Heropy')
-        callback()
-    }, 3000)
-}
+// function timeout(callback){
+//     setTimeout(() => {
+//         console.log('Heropy')
+//         callback()
+//     }, 3000)
+// }
 
-timeout(() => {
-    console.log('Done')
-})
-
-
+// timeout(() => {
+//     console.log('Done')
+// })
 
 
 
+//함수 클래스
+
+// const heropy = {
+//     firstName: 'Heropy',
+//     lastName: 'Park',
+//     getFullName: function(){
+//         return `${this.firstName} ${this.lastName}`
+//     }
+// }
 
 
+// console.log(heropy)
+// console.log(heropy.getFullName)
+// //이렇게 ``(백틱) 기호를 사용한다는것은 외부에서 데이터가 들어가서 표현할수있다는것을 전제.(내부 특정데이터가 보관되있다.)
+// //this - heropy로 직접 서도 되지만 객체이름은 바뀔수있기때문에 그 객체를 지칭하는 this를 쓰는것이 더 권장한다. 
+
+
+// const amy = {
+//     firstName : 'Amy',
+//     lastName: 'Clarke',
+//     getFullName: function(){
+//         return `${this.firstName} ${this.lastName}`
+//     }
+// }
+
+// console.log(amy.getFullName)
+
+
+// const neo = {
+//     firstName: 'Neo',
+//     lastName:'Smith',
+//     getFullName: function(){
+//         return `${this.firstName} ${this.lastName}`
+//     }
+// }
+
+// console.log(neo.getFullName)
+
+//-----------------------------------------------------------------
+//위와 같은 로직의 데이터는 같은 형식의 데이터가 중복되기때문에 메모리 사용량이 많아짐.
+//위 내용을 클래스로 바꾸게 되면 효율적으로 사용이 가능하다,.
+
+// function User(first, last){
+//     this.firstName = first
+//     this.lastName = last
+    
+// }
+
+// User.prototype.getFullName = function(){
+//     return `${this.firstName} ${this.lastName}`
+// }
+
+// const heropy = new User('Heropy','Park')
+// const amy = new User('Amy','Clarke')
+// const neo = new User('Neo','Smith')
+
+// console.log(heropy.getFullName())
+// console.log(amy.getFullName())
+// console.log(neo.getFullName())
+
+//위와 같이 사용하면 콘솔부분에 객체 데이터 하나가 나옴.
+//이때 User는 생성자 함수 라고 한다.
+//객체 데이터가 생성된다는 의미
+//결국 heropy  amy  neo  -- 인스턴스 들임.
+//prototype = 
+//생성자 함수는  new와 함께 사용 파스칼 케이스로 앞을 대문자로 사용함.
+
+
+//this
+//일반 함수는 호출 위치에 따라서  this 정의
+//화살표 함수는 자신이 선언된 함수 범위에서  this 정의

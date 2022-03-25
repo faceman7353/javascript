@@ -526,3 +526,65 @@ console.log(R)
 ```
 
 
+# Lodash
+
+```plaintext
+// import _ from 'lodash'
+// //default로나오는 데이터는 이름을 자유자재로 바꿀수있다.
+
+
+// const usersA = [
+//         { userId : '1', name: 'Heropy' },
+//         { userId : '2', name: 'Neo' }
+// ]
+
+// const usersB = [
+//         { userId : '1', name: 'Heropy' },
+//         { userId : '3', name: 'Amy' }
+// ]
+
+// const usersC = usersA.concat(usersB)  //병합   usersA 데이터와  병합할 데이터 usersB를 합쳐서 usersC를 만듬
+// console.log('concat', usersC)
+// console.log('uniqBy', _.uniqBy(usersC, 'userId'))
+//uniqBy(중복된 데이터배열, 중복을 구분할 고유한 속성)
+//uniqBy(usersC, 'userId')) 이렇게
+//하나의 배열데이터에서 어떤 특정한 속성의 이름으로 고유화를 만들어줌.
+//배열데이터가 하나일때
+
+
+// const usersD = _.unionBy(usersA, usersB, 'userId')
+// console.log('unionBy', usersD)
+
+//unionBy는 A와 B를 합치기 전이라면 unionBy를 사용하는것도 방법이다.
+//unionBy(배열A,배열B, 고유값으로 사용할 속성이름)
+//합치기전 여러개의 배열 데이터를 적어주고 마지막에 합칠때 고유화 작업을 할때 사용.
+//배열데이터가 여러개일때
+
+
+//=============================================================
+
+
+import _ from 'lodash'
+const users = [
+        { userId : '1', name: 'Heropy' },
+        { userId : '2', name: 'Neo' },
+        { userId : '3', name: 'Amy' },
+        { userId : '4', name: 'Evan' },
+        { userId : '5', name: 'Lewis' }
+]
+
+const foundUser = _.find(users, { name: 'Amy' })
+//find-무언가 찾을것인데. users라는 배열에서  문자 데이터 { name : 'Amy'} 를 찾겠다 라고 선언함.
+const foundUserIndex = _.findIndex(users, { name: 'Amy' } )
+//해당 객체의 인덱스만 반환.
+
+console.log(foundUser)
+console.log(foundUserIndex)
+
+_.remove(users, {name: 'HEROPY'})
+console.log(users)
+
+//users 배열 데이터에서 'HEROPY'라는 데이터를 지워라 라는의미.
+
+
+```

@@ -386,3 +386,143 @@ timeout(() => {
 })
 
 ```
+***
+# 중간 내용 따로 있음
+***
+
+
+# 데이터의 불변성(Immutability)
+
+#### 원시 데이터: String,Number,Boolean, undefined,null
+#### 참조성 데이터: Object, Array, Function
+
+```plaintext
+----------------------------------------------------------------
+//|1:    1           |2:    4             |3:     7           |4:
+//--------------------------------------------------------------------------
+//메모리 내용(위에)
+//원시형 데이터는 기본적인 성질이 데이터가 변하지않는 성질을 가지고있다.
+//참조형 데이터는 생긴것이 같이도 같은 데이터가 아닐수도 잇다라는것을 참고하기바람.
+
+
+
+
+//--------------------------------------원시형 데이터 예
+// let a = 1  //1번째 메모리 주소를 지칭
+// let b = 4  //2번째 메모리 주소를 지칭
+
+// console.log(a, b, a === b)
+// b = a  //메모리 주소가 같기때문에 TRUE
+// console.log(a, b, a === b)
+// a = 7
+// console.log(a, b, a === b)
+// let c = 1
+// console.log(b,c,  b === c)
+
+// let e = 9
+// let f = 9
+
+// console.log(e, f, e === f)
+
+//--------------------------------------참조형 데이터 예
+//------------------------------------------------------------------------------------------------------------------------------------------
+//|1:    {k: 1}     |2:    {k: 1}        |3:     7           |4:
+//------------------------------------------------------------------------------------------------------------------------------------------
+//1과2번 메모리 위치가 다르다.
+//참조형 데이터는 불변구조가 아니다.
+// let a = {k : 1}  //1번째 메모리 주소를 지칭
+// let b = {k : 1}   //2번째 메모리 주소를 지칭
+
+// console.log(a, b, a === b)
+// a.k = 7 //메모리 주소가 같기때문에 TRUE
+// b = a
+
+// console.log(a, b, a === b)
+// a.k = 2
+// console.log(a, b, a === b)
+// let c = b
+// console.log(a,b,c,  a === c)
+// a.k = 9
+// console.log(a,b,c,  a === c)
+
+
+//만약 변수의 데이터를 구분해서 관리하고싶을때는
+//복사라는 개념 사용
+//복사 - 얕은 복사  - 겉에 표면만 복사
+      // -깊은 복사 - 내부에 있는 모든 관계까지 복사
+
+```
+
+
+
+
+# 얖은 복사, 깊은복사
+
+```plaintext
+------------------------------------------------------------------------------------------------------------------------------------------
+//|1:    1           |2:    4             |3:     7           |4:
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+// import _ from 'lodash'
+// //객체 이름을 lodash라고 써도 되지만 
+// //일반적으로는 _ 이렇게 사용하는것을 권장
+
+// const user = {
+//         name:'Heropy',
+//         age:85,
+//         email:['thesecon@gmail.com']
+
+// }
+
+// const copyUser = Object.assign({}, user)  //copy data 얕은 복사
+// const copyUser = {...user}  //전개연산자를 사용해도 됨.
+// const copyUser = _.cloneDeep(user) //깊은 복제  --내부 모든 데이터를 복사해서 메모리 주소가 다르다.
+
+// console.log(copyUser === user) 
+
+// user.age = 22
+// console.log('user',user)
+// console.log('copyUser',copyUser)
+
+// console.log('--------')
+// console.log('--------')
+
+// user.email.push('neo@zillinks.com')
+// console.log(user.email === copyUser.email)
+// console.log('user',user)
+// console.log('copyUser',copyUser)
+ 
+ ```
+
+# 가져오기, 내보내기
+
+```plaintext
+
+import _ from 'lodash'  //lodash  는 _ 쓰는것을 권장한다. From 'node_modules'!
+import getType from './getType' //getType.js
+// import {getRandom ,user as heropy} from './getRandom' //getRandom.js
+import * as R from './getRandom'
+
+
+console.log(_.camelCase('the hello world'))
+console.log(getType([1,2,3]))
+// console.log(getRandom(),getRandom())
+console.log(R)
+
+
+---
+//default export  - 데이터 이름을 설정하지 않아도 됨.
+//기본통로로 나가는 데이터는 이름을 지정하지 안아도되고 import할때도 이름을 바꾸어 사용해도 됨.
+//기본통로는 하나의 데이터만 내보낼수있다.
+
+
+---
+
+//named export - 이름을 명시해야하는 export
+//이름을 지정해야하는 데이터는 --
+//import {getRandom} from './getRandom' //getRandom.js -- 이름을 중괄호로 묶어주어야 정상 작동
+//이름이 지정되있는 데이터는 이름만 지정하면 몇개의 데이터를 내보내도 상관업다.
+
+```
+
+

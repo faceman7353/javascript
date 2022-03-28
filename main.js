@@ -1028,24 +1028,103 @@
 //=============================================================
 
 
-import _ from 'lodash'
-const users = [
-        { userId : '1', name: 'Heropy' },
-        { userId : '2', name: 'Neo' },
-        { userId : '3', name: 'Amy' },
-        { userId : '4', name: 'Evan' },
-        { userId : '5', name: 'Lewis' }
-]
+// import _ from 'lodash'
+// const users = [
+//         { userId : '1', name: 'Heropy' },
+//         { userId : '2', name: 'Neo' },
+//         { userId : '3', name: 'Amy' },
+//         { userId : '4', name: 'Evan' },
+//         { userId : '5', name: 'Lewis' }
+// ]
 
-const foundUser = _.find(users, { name: 'Amy' })
-//find-무언가 찾을것인데. users라는 배열에서  문자 데이터 { name : 'Amy'} 를 찾겠다 라고 선언함.
-const foundUserIndex = _.findIndex(users, { name: 'Amy' } )
-//해당 객체의 인덱스만 반환.
+// const foundUser = _.find(users, { name: 'Amy' })
+// //find-무언가 찾을것인데. users라는 배열에서  문자 데이터 { name : 'Amy'} 를 찾겠다 라고 선언함.
+// const foundUserIndex = _.findIndex(users, { name: 'Amy' } )
+// //해당 객체의 인덱스만 반환.
 
-console.log(foundUser)
-console.log(foundUserIndex)
+// console.log(foundUser)
+// console.log(foundUserIndex)
 
-_.remove(users, {name: 'HEROPY'})
-console.log(users)
+// _.remove(users, {name: 'HEROPY'})
+// console.log(users)
 
 //users 배열 데이터에서 'HEROPY'라는 데이터를 지워라 라는의미.
+
+
+//Json데이터 활용하기
+//JSON데이터는 문자데이터이다.
+//stringify - 자바스크립트 파일내부에서 어떤 특정한 데이터를 
+//            JSON의 형태로 문자 데이터화 시켜주는 메소드이다.(JSON 화시킴)
+//최대한 경량화 시켜야하는 데이터
+//JSON파일이 자바스크립트 파일로 되려면 JSON.parse() 메소드를 사용하면 됨
+
+// import myData from './myData.json'
+
+// console.log(myData)
+
+// const user = {
+//         name:"heropy",
+//         age : 85,
+//         email : 
+//         ['thesecon@gmail.com',
+//         'neo@zillinks.com']
+
+// }
+
+// console.log('user', user)
+
+// const str = JSON.stringify(user)
+// console.log('str',str)
+// console.log(typeof str)
+
+// const obj = JSON.parse(str)
+// console.log('obj', obj)
+
+//======================================================================
+//local storage와  session storage
+//local storage mdn 검색
+
+// const user = {
+//         name:"heropy",
+//         age : 85,
+//         email : [
+//         'thesecon@gmail.com',
+//         'neo@zillinks.com'
+//         ]
+// }
+
+// const str = localStorage.getItem('user')
+// const obj= JSON.parse(str)
+// obj.age = '22'
+// console.log(obj)
+// localStorage.setItem('user',JSON.setItem(obj))
+
+//위와 같은 JSON 은 원시적인 방법이어서  이것을   lodash 라이브러리로 사용할수있는 방법
+//google 검색 - lowdb 검색
+
+//=======================================================================
+//omdbapi
+//영화 데이터를 요청하고 그것을 받아서 main.js에서 출력해보는 것을 해보기
+//쿼리 스트링
+//Query(검색으로 의미) String(문자)
+//구조
+//주소?속성=값&속성=값&속성=값
+//querystring의 값을 제데로 실행해줄수있는 패키지가있는데 
+//axios임(http요청을 처리해주는 자바스크립트 패키지)
+
+// import axios from "axios"
+
+// function fetchMovies(){
+//         axios
+//         .get('https://www.omdbapi.com/?apikey=7035c60c&s=frozen')
+//         .then(res => {
+//                 console.log(res)
+//                 const h1El = document.querySelector('h1')
+//                 const imgEl = document.querySelector('img')
+//                 h1El.textContent = res.data.Search[0].Title
+//                 imgEl.src = res.data.Search[0].Poster
+
+//         })
+// }
+
+// fetchMovies()

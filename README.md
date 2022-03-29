@@ -1114,3 +1114,195 @@ const fruits = ['Apple', 'Banana', 'Cherry']
 
 
 ```
+
+# node.js 관련 기본 사항들
+
+---
+```plaintext
+
+자바스크립트 실행 환경
+node.js,   browser
+
+
+Node.js
+
+Node.js는 Chrome V8 Javascript 엔진으로 만들어진(빌드된) Javascript 런타임
+런타임 - 어떤 프로그래밍 언어가 동작하는 환경.
+
+javascript  가 동작할수있는 환경
+javascript는 프로그래밍 언어
+
+ 
+Node.js가 깔린 컴퓨터
+Chrome 같은 웹 브라우저
+
+
+Node.js - 웹페이지를 개발하기 위해서 약간의 도움을 받기 위한 프로그램5ㅅ
+
+웹페이지를 개발할시 html, css, javasctip만으로 개발할수있는데 비효율적
+그래서 개인의 컴퓨터에  node.js 를 포함한 라이브러리를 설치후 html,css,javascript 로 변환하여
+사용하여야한다.
+변환작업을 만들어주어야한다.
+
+버전 
+LTS - 안정적인 버전
+nvm - node.js version manager
+nvm - https://github.com/creationix/nvm
+       - https://github.com/coreybutler/nvm-windows
+
+n - https://github.com/tj/n
+
+Browser - 크롬 사용하면됨.
+
+
+
+node.js를 설치 했으니 이제 npm을 사용할수있다.
+npm도 여러 라이브러리를 설치해야만 그 안의 생태계를 사용가능하기때문에 
+라이브러리를 설치해보자
+
+>npm init -y
+생태계 확인 됨.
+javascript를 사용하겠다 라는의미.
+git init도 사용하기전 먼저 선언을 하는것처럼 
+npm init -y 또한 선언하는것임.
+
+그렇게 되면 package.json파일이 생성됨.
+
+
+>npm install pacel-bundler -D    <---------pacel-bundler이것은 라이브러리 중하나.
+"devDependencies": {
+    "parcel-bundler": "^1.12.5"
+--> parcel-bundler는 개발하는 용도로만 사용하기때문에 -D를 붙여여한다.
+> npm install parcel-bundler -D  (또는--save-dev)  또는 
+>npm i parcel-bundler -D  (또는--save-dev)
+
+
+
+>npm install  lodash   <------------ lodash도 라이브러리
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
+
+-D를 붙이는것과 안붙이는것의 차이는 
+
+-D를 붙이는것 - 개발용 의존성 패키지 설치
+==>개발할때만 필요하고 웹브라우저에서 사용할때는 필요하지 않다는 개념
+(-D , --sava-dev를 축약)
+
+-D를 붙이지 않는것 - 일반 의존성 설치
+==>웹 브라우저에서 동작할수도 잇다는것을 전제함,.
+
+그렇게 구분하는것을 의미
+
+
+
+만약 node_modules폴더를 지웠더라도 
+내부에서 
+>npm install 또는 npm i 라고 치면 다시 설치되어 나옴.
+
+======================================
+
+번들- 우리가 프로젝트 개발에 사용한 여러 모듈을 하나로 묶어내는 작업을 말합니다.
+
+
+유의적 버전(의미 부여)
+(semantic versioning ,Semver)
+
+node --version
+> ^12.14.1
+^major.minor.Patch
+^ - major 버전 안에서 가장 최신 버전으로 업데이트 가능
+major  - 기존 버전과 호환되지않는 새로운 버전.
+minor - 기존 버전ㄴ과 호환되는 새로운 기능이 추가된 버전.
+patch - 기존 버전과 호환되는 버그 및 오타 등이 수정된 버전.
+
+라이브러리 버전 설치 및 업데이트
+
+>npm install lodash@버전
+>npm update lodash
+
+이렇게 하면되고
+
+만약 package.json 파일에 
+
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+
+
+
+>npm run build 
+위 명령어를 통해서 . cach , dist, node.modules 폴더들을 완벽하게 재현할수있다.
+그래서 git으로 버전관리하지않아도된다.
+
+따로 버전 관리 하지않겠다 라고 하고 
+.gitignore 라는 파일을 만든다,
+
+
+========================================
+
+npm 설치후 parcel-bundler 설치
+package.json 파일 수정
+
+ "scripts": {
+    "dev":"parcel index.html",
+    "build":"parcel build index.html"
+  },
+
+위와 같이 수정후
+
+>npm run dev
+하게되면 터미널에서 서버가 열림.
+
+----------------------------------------------------------------------------
+
+타입 스크립트 컴파일러 설치
+
+npm / visual studio plugin
+
+npm i typesctipt -g  -- 글로벌로 전역 사용
+node_modules/.bin/tsc
+tsc source.ts
+
+타입스크립트 컴파일러 명령어
+폴더 안에 있다면.
+tsc 특정파일
+
+tsc -w  -- watch모드
+=파일이 수정됬을때마다 컴파일됨.
+
+-visual studio plugin설치
+visual studio 2017/2015 업데이트 3이후로는 디폴트로 설치되있음.
+아님 설치
+
+
+
+typescript 특정 파일에 설치
+폴더 만들고
+폴더 내부 진입.
+npm --init   ---tsconfig.json 파일이 생성됨.
+npm i typescript
+
+그리고 컴파일할때 글로벌로 설치하면 tsc만 하면 되었는데
+특정 폴더안에서 실행하면 
+node_modules/.bin/tsc  라고 하거나
+node_modules/typescript/bin/tsc 라고 해야함.
+최근은
+npx tsc --init 으로 해도 됨.
+
+npx 사용하게되면.
+이제는 
+npx tsc 치고
+문제없으면 .js 파일이 생성됨. 
+node  파일이름.js 입력하면 됨.
+
+
+
+
+
+
+```
